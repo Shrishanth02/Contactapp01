@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require("mongoose");
 const path =require('path');
@@ -9,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static('public'));
 //connection to data base
-const uri = 'mongodb+srv://Shrishanth:qwerty123@cluster0.ywfol.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const uri = process.env.DB_URI;
 mongoose.connect(uri,{//change database
     useNewUrlParser:true,
     }).then(()=>{
